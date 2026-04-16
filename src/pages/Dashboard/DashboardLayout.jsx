@@ -40,13 +40,13 @@ const DashboardLayout = () => {
       </NavLink>
     </li>
     <li>
-  <NavLink
-    to="/dashboard/Offer"
-    className="flex items-center gap-2 hover:text-green-700"
-  >
-    <FaHandshake /> My Offer
-  </NavLink>
-</li>
+      <NavLink
+        to="/dashboard/offer"
+        className="flex items-center gap-2 hover:text-green-700"
+      >
+        <FaHandshake /> My Offer
+      </NavLink>
+    </li>
     <li>
       <NavLink
         to="/dashboard/property-bought"

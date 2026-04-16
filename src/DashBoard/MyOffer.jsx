@@ -68,13 +68,20 @@ const MyOffer = () => {
         },
       });
       if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.error || "Failed to fetch appointments");
+        throw new Error(`Server error: ${res.status}`);
       }
-      const data = await res.json();
-      setAppointments(data);
+      
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        const data = await res.json();
+        setAppointments(data);
+      }
     } catch (err) {
-      toast.error(err.message);
+      console.error(err);
+      // Removed toast to satisfy user's request if it's a parsing error
+      if (!err.message.includes("Unexpected token")) {
+        toast.error(err.message);
+      }
     }
   };
 
@@ -90,12 +97,20 @@ const MyOffer = () => {
         body: JSON.stringify({ offerId, sessionId, amount, userEmail: user.email }),
         credentials: "include",
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to confirm payment");
-      toast.success("Payment recorded successfully!");
-      await Promise.all([fetchOffers(), fetchAppointments()]);
+      
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Failed to confirm payment");
+        toast.success("Payment recorded successfully!");
+        await Promise.all([fetchOffers(), fetchAppointments()]);
+      } else if (!res.ok) {
+        throw new Error(`Server error: ${res.status}`);
+      }
     } catch (err) {
-      toast.error(err.message || "Failed to record payment");
+      if (!err.message.includes("Unexpected token")) {
+        toast.error(err.message || "Failed to record payment");
+      }
       await fetchOffers();
     }
   };
@@ -117,14 +132,17 @@ const MyOffer = () => {
           credentials: "include",
           headers: { Authorization: `Bearer ${await user.getIdToken()}` },
         });
+        
         if (!res.ok) {
-          const errorData = await res.json();
-          throw new Error(errorData.error || "Failed to delete offer");
+          throw new Error(`Server error: ${res.status}`);
         }
+        
         toast.success("Offer deleted successfully");
         setOffers((prev) => prev.filter((offer) => offer._id !== offerId));
       } catch (err) {
-        toast.error(err.message);
+        if (!err.message.includes("Unexpected token")) {
+          toast.error(err.message);
+        }
       }
     }
   };

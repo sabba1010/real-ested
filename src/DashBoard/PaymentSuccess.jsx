@@ -29,7 +29,7 @@ const PaymentSuccess = () => {
     <div className="max-w-5xl mx-auto p-6">
       <h2 className="text-2xl font-bold mb-4">Payment Successful</h2>
       <p>Your payment has been processed. Thank you for your purchase!</p>
-      <a href="/dashboard/Offer" className="text-blue-600 hover:underline">
+      <a href="/dashboard/offer" className="text-blue-600 hover:underline">
         Back to My Offers
       </a>
     </div>

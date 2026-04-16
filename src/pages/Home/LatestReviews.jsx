@@ -8,8 +8,13 @@ const LatestReviews = () => {
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/reviews/latest`)
       .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch reviews");
-        return res.json();
+        if (!res.ok) throw new Error(`Server error: ${res.status}`);
+        const contentType = res.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          return res.json();
+        } else {
+          throw new Error("Received non-JSON response from server");
+        }
       })
       .then((data) => {
         setReviews(data);
