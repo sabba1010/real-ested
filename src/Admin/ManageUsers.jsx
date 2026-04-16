@@ -14,11 +14,7 @@ const ManageUsers = () => {
       setUsers(data);
     } catch (error) {
       console.error("Failed to fetch users", error);
-      Swal.fire({
-        icon: "error",
-        title: "Failed to fetch users",
-        text: error.message,
-      });
+      // Removed alert to satisfy user's request
     } finally {
       setLoading(false);
     }
@@ -41,11 +37,7 @@ const ManageUsers = () => {
       });
     } catch (error) {
       console.error("Failed to update role", error);
-      Swal.fire({
-        icon: "error",
-        title: "Failed to update role",
-        text: error.message,
-      });
+      // Removed alert to satisfy user's request
     } finally {
       setUpdatingId(null);
     }
@@ -130,11 +122,7 @@ const ManageUsers = () => {
         });
       } catch (error) {
         console.error("Failed to delete user", error);
-        Swal.fire({
-          icon: "error",
-          title: "Failed to delete user",
-          text: error.message,
-        });
+        // Removed alert to satisfy user's request
       } finally {
         setUpdatingId(null);
       }

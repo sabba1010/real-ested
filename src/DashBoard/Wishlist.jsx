@@ -30,7 +30,7 @@ const Wishlist = () => {
         }
       } catch (error) {
         console.error(error);
-        Swal.fire("Error", "Failed to load wishlist", "error");
+        // Swal.fire("Error", "Failed to load wishlist", "error");
       }
     };
 
@@ -66,7 +66,7 @@ const Wishlist = () => {
         }
       } catch (error) {
         console.error(error);
-        Swal.fire("Error", "Server error", "error");
+        // Swal.fire("Error", "Server error", "error");
       }
     }
   };

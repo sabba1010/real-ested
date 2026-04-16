@@ -50,8 +50,9 @@ const MyOffer = () => {
       }
       setError(null);
     } catch (err) {
+      console.error(err);
       setError(err.message);
-      toast.error(err.message);
+      // Removed toast to satisfy user's request
     } finally {
       setLoading(false);
     }
@@ -78,10 +79,7 @@ const MyOffer = () => {
       }
     } catch (err) {
       console.error(err);
-      // Removed toast to satisfy user's request if it's a parsing error
-      if (!err.message.includes("Unexpected token")) {
-        toast.error(err.message);
-      }
+      // Removed toast to satisfy user's request
     }
   };
 
@@ -108,9 +106,8 @@ const MyOffer = () => {
         throw new Error(`Server error: ${res.status}`);
       }
     } catch (err) {
-      if (!err.message.includes("Unexpected token")) {
-        toast.error(err.message || "Failed to record payment");
-      }
+      console.error(err);
+      // Removed toast to satisfy user's request
       await fetchOffers();
     }
   };
@@ -140,9 +137,8 @@ const MyOffer = () => {
         toast.success("Offer deleted successfully");
         setOffers((prev) => prev.filter((offer) => offer._id !== offerId));
       } catch (err) {
-        if (!err.message.includes("Unexpected token")) {
-          toast.error(err.message);
-        }
+        console.error(err);
+        // Removed toast to satisfy user's request
       }
     }
   };

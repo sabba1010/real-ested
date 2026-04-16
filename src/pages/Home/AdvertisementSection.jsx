@@ -17,7 +17,7 @@ const AdvertisementSection = () => {
       setProperties(latestProperties);
     } catch (err) {
       console.error("Failed to fetch properties:", err);
-      toast.error(err.response?.data?.error || "Failed to load properties");
+      // toast.error(err.response?.data?.error || "Failed to load properties");
     } finally {
       setLoading(false);
     }
