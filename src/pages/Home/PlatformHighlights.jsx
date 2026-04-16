@@ -15,7 +15,7 @@ const highlights = [
 
 const PlatformHighlights = () => {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-950 text-white">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-950 text-white rounded-[2rem] shadow-2xl overflow-hidden">
       <div className="max-w-7xl mx-auto grid gap-10 lg:grid-cols-[2fr_1fr] items-center">
         <div className="rounded-[2rem] overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 shadow-[0_40px_120px_-40px_rgba(15,23,42,0.85)]">
           <div className="p-8 md:p-12 lg:p-16">

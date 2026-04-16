@@ -40,55 +40,59 @@ const LatestReviews = () => {
   }
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12 bg-white rounded-3xl shadow-xl">
-      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="text-sm uppercase tracking-[0.24em] text-green-600 font-semibold mb-2">
-            Customer Feedback
-          </p>
-          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">
-            What our buyers are saying
-          </h2>
-        </div>
-        <p className="max-w-xl text-gray-600">
-          Real stories from happy customers help you trust every listing and every agent.
-        </p>
-      </div>
-
-      <div className="grid gap-6 mt-8 sm:grid-cols-2 xl:grid-cols-3">
-        {reviews.map((review) => {
-          const { _id, comment, createdAt, user, property } = review;
-
-          return (
-            <article
-              key={_id}
-              className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <img
-                  src={user?.photoURL || "/default-avatar.png"}
-                  alt={user?.name || "Reviewer"}
-                  className="w-16 h-16 rounded-full object-cover border-2 border-green-500"
-                />
-                <div>
-                  <p className="font-semibold text-gray-900">{user?.name || "Anonymous"}</p>
-                  <p className="text-sm text-gray-500">
-                    {new Date(createdAt).toLocaleDateString(undefined, {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </p>
-                </div>
-              </div>
-
-              <p className="text-gray-700 leading-relaxed mb-5">"{comment}"</p>
-              <p className="text-sm text-gray-500">
-                Property: <span className="font-medium text-gray-900">{property?.title || "Not specified"}</span>
+    <section className="py-16 bg-slate-100 rounded-[2rem] shadow-2xl overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-[2rem] bg-white p-8 shadow-xl">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-sm uppercase tracking-[0.24em] text-green-600 font-semibold mb-2">
+                Customer Feedback
               </p>
-            </article>
-          );
-        })}
+              <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">
+                What our buyers are saying
+              </h2>
+            </div>
+            <p className="max-w-xl text-gray-600">
+              Real stories from happy customers help you trust every listing and every agent.
+            </p>
+          </div>
+
+          <div className="grid gap-6 mt-10 sm:grid-cols-2 xl:grid-cols-3">
+            {reviews.map((review) => {
+              const { _id, comment, createdAt, user, property } = review;
+
+              return (
+                <article
+                  key={_id}
+                  className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <img
+                      src={user?.photoURL || "/default-avatar.png"}
+                      alt={user?.name || "Reviewer"}
+                      className="w-16 h-16 rounded-full object-cover border-2 border-green-500"
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-900">{user?.name || "Anonymous"}</p>
+                      <p className="text-sm text-gray-500">
+                        {new Date(createdAt).toLocaleDateString(undefined, {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="text-gray-700 leading-relaxed mb-5">"{comment}"</p>
+                  <p className="text-sm text-gray-500">
+                    Property: <span className="font-medium text-gray-900">{property?.title || "Not specified"}</span>
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );

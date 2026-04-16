@@ -32,7 +32,7 @@ const AdvertisementSection = () => {
   };
 
   return (
-    <section className="py-16 bg-slate-100">
+    <section className="py-16 bg-slate-100 rounded-[2rem] shadow-2xl overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-[2rem] bg-white p-8 shadow-2xl border border-slate-200">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-8 border-b border-slate-200 pb-8 mb-10">
