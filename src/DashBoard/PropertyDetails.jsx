@@ -160,9 +160,9 @@ const PropertyDetails = () => {
     <div className="max-w-5xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
       <h1 className="text-4xl font-extrabold mb-6 text-gray-800">{property.title}</h1>
 
-      {property.image && (
+      {(property.image || property.imageUrl) && (
         <img
-          src={property.image}
+          src={property.image || property.imageUrl}
           alt={`${property.title} image`}
           className="rounded mb-6 w-full max-h-96 object-cover"
         />
