@@ -8,7 +8,7 @@ import PlatformHighlights from './PlatformHighlights';
 
 const Home = () => {
     return (
-        <div className="space-y-12">
+        <div className="space-y-16 px-4 sm:px-6 lg:px-8">
             <Banner />
             <PlatformHighlights />
             <AdvertisementSection />

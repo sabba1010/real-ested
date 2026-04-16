@@ -17,23 +17,26 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-12 bg-gray-100">
+    <section className="py-16 bg-slate-950 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
-        <div className="text-center mb-10">
-          <p className="text-sm uppercase tracking-[0.3em] text-green-600 font-semibold mb-3">
+        <div className="text-center mb-12">
+          <p className="text-sm uppercase tracking-[0.3em] text-emerald-300 font-semibold mb-3">
             Why choose us
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold">🏆 Why Choose Us</h2>
+          <p className="mt-4 text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            We combine verified listings, secure transactions, and responsive support so your property journey feels effortless.
+          </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
           {features.map((item, i) => (
             <div
               key={i}
-              className="bg-white p-7 rounded-[1.5rem] shadow-sm hover:shadow-lg transition"
+              className="bg-slate-900/90 p-7 rounded-[1.75rem] border border-white/10 shadow-2xl transition-transform duration-300 hover:-translate-y-1"
             >
-              <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+              <h3 className="text-xl font-semibold mb-3 text-white">{item.title}</h3>
+              <p className="text-slate-300 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
