@@ -32,11 +32,22 @@ const MyOffer = () => {
         },
       });
       if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.error || "Failed to fetch offers");
+        const contentType = res.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const errorData = await res.json();
+          throw new Error(errorData.error || "Failed to fetch offers");
+        } else {
+          throw new Error(`Server error: ${res.status}`);
+        }
       }
-      const data = await res.json();
-      setOffers(data);
+      
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        const data = await res.json();
+        setOffers(data);
+      } else {
+        throw new Error("Received non-JSON response from server");
+      }
       setError(null);
     } catch (err) {
       setError(err.message);

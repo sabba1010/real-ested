@@ -20,8 +20,14 @@ const Wishlist = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error("Failed to fetch wishlist");
-        const data = await res.json();
-        setWishlist(data);
+        
+        const contentType = res.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const data = await res.json();
+          setWishlist(data);
+        } else {
+          throw new Error("Received non-JSON response from server");
+        }
       } catch (error) {
         console.error(error);
         Swal.fire("Error", "Failed to load wishlist", "error");

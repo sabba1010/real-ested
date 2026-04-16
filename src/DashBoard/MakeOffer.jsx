@@ -135,7 +135,7 @@ const MakeOffer = () => {
           propertyId: id,
           userEmail: user.email,
           userName: user.name || "Anonymous",
-          offerAmount: amount,
+          offerPrice: amount,
           buyingDate,
         });
         Swal.fire({ icon: "success", title: "Offer submitted successfully!" });

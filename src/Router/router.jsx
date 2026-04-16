@@ -12,6 +12,7 @@ import MyProfile from "../pages/Dashboard/MyProfile.jsx";
 import Wishlist from "../DashBoard/Wishlist.jsx";
 import Reviews from "../pages/Dashboard/Reviews.jsx";
 import MyOffer from "../DashBoard/MyOffer.jsx";
+import MakeOffer from "../DashBoard/MakeOffer.jsx";
 import PropertyBought from "../DashBoard/propertyBought.jsx";
 import AgentDashboardHome from "../Agent/AgentDashboardHome.jsx";
 import AddNewProperty from "../Agent/AddNewProperty.jsx";
@@ -51,6 +52,7 @@ export const router = createBrowserRouter([
           { index: true, element: <MyProfile /> },
           { path: "my-profile", element: <MyProfile /> },
           { path: "wishlist", element: <Wishlist /> },
+          { path: "make-offer/:id", element: <MakeOffer /> },
           { path: "offer", element: <MyOffer /> },
           { path: "property-bought", element: <PropertyBought /> },
           { path: "my-reviews", element: <Reviews /> },

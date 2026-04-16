@@ -24,9 +24,15 @@ const PropertyBought = () => {
       if (!res.ok) {
         throw new Error("Failed to fetch paid properties");
       }
-      const data = await res.json();
-      const paidOffers = data.filter((offer) => offer.status?.toLowerCase() === "paid");
-      setPaidProperties(paidOffers);
+      
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        const data = await res.json();
+        const paidOffers = data.filter((offer) => offer.status?.toLowerCase() === "paid");
+        setPaidProperties(paidOffers);
+      } else {
+        throw new Error("Received non-JSON response from server");
+      }
       setLoading(false);
     } catch (err) {
       console.error(err);
