@@ -40,7 +40,7 @@ const LatestReviews = () => {
   }
 
   return (
-    <section className="max-w-7xl mx-auto p-6 bg-white rounded-3xl shadow-xl mt-8">
+    <section className="max-w-7xl mx-auto px-4 py-12 bg-white rounded-3xl shadow-xl">
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-sm uppercase tracking-[0.24em] text-green-600 font-semibold mb-2">

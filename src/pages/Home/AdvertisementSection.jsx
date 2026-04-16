@@ -32,7 +32,7 @@ const AdvertisementSection = () => {
   };
 
   return (
-    <div className="px-4 py-10 max-w-7xl mx-auto bg-slate-50 rounded-[2rem] shadow-xl">
+    <section className="px-4 py-12 max-w-7xl mx-auto bg-slate-50 rounded-[2rem] shadow-xl">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-8">
         <div>
           <p className="text-sm uppercase tracking-[0.24em] text-green-600 font-semibold mb-2">
@@ -107,7 +107,7 @@ const AdvertisementSection = () => {
           ))}
         </div>
       )}
-    </div>
+    </section>
   );
 };
 
